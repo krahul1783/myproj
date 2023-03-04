@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+const int N = 10000;
+
+void judge()
+{
+	#ifndef ONLINE_JUDGE
+		freopen("Input.txt", "r", stdin);
+		freopen("Output.txt", "w", stdout);
+	#endif
+}
+
+int main()
+{
+
+	judge();
+	//==================================================================
+
+	int t;
+	cin >> t;
+
+	while(t--)
+	{
+		ll n;
+	    cin >> n;
+	    ll ar[n];
+	    ll current = 0;
+	    for (int i = 0; i < n; i++)
+	    {
+	        cin >> ar[i];
+	    }
+	    
+	    multiset<ll> s;
+		 ll sum = 0;
+	    for (int i = 0; i < n; i++)
+	    {
+	        if (ar[i])
+	        {
+	            s.insert(ar[i]);
+	        }
+	        else
+	        {
+	            if (s.size() == 0)
+	            {
+	                continue;
+	            }
+
+	            current = *s.rbegin();
+	            auto it = s.find(current);
+	            s.erase(it);
+
+	            sum += current;
+	        }
+	    }
+	    cout << sum << endl;
+	}
+
+	return 0;
+		
+}
